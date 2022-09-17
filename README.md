@@ -1,2 +1,7 @@
+![](/cover.png)
+
 # uni-fanlp
-Repo for uni functional &amp; logical programming
+
+Repo for university's functional logic programming
+
+---
