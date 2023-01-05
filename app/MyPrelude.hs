@@ -1,26 +1,47 @@
-module Main where
+module MyPrelude where
 
-mdrop :: Int -> [a] -> [a]
-mdrop 0 list = list
-mdrop n (_:xs) = mdrop (n - 1) xs
+mHead :: [a] -> a
+mHead [] = error "There is no head in empty list"
+mHead (x:_) = x
 
-mtake :: Int -> [a] -> [a]
-mtake 0 _ = []
-mtake _ [] = []
-mtake n (x:xs) = x:tl
-  where tl = mtake (n - 1) xs
+mTail :: [a] -> [a]
+mTail [] = error "There is no tail in empty list"
+mTail (_:xs) = xs
 
-mlength :: [a] -> Int
-mlength [] = 0
-mlength (x:xs) = 1 + (mlength xs)
+mDrop :: Int -> [a] -> [a]
+mDrop 0 list = list
+mDrop n (_:xs) = mDrop (n - 1) xs
 
-mcycle :: [a] -> [a]
-mcycle (x:xs) = x: mcycle (xs ++ [x])
+mTake :: Int -> [a] -> [a]
+mTake 0 _ = []
+mTake _ [] = []
+mTake n (x:xs) = x : t
+  where t = mTake (n - 1) xs
 
-mrev :: [a] -> [a]
-mrev [] = []
-mrev [x] = [x]
-mrev (x:xs) = (mrev xs) ++ [x]
+mLength :: [a] -> Int
+mLength [] = 0
+mLength (x:xs) = 1 + (mLength xs)
 
-main = do
-  return 0
+mCycle :: [a] -> [a]
+mCycle (x:xs) = x : mCycle (xs ++ [x])
+
+mReverse :: [a] -> [a]
+mReverse [] = []
+mReverse [x] = [x]
+mReverse (x:xs) = (mReverse xs) ++ [x]
+
+mMap :: (t -> a) -> [t] -> [a]
+mMap _ [] = []
+mMap func (x:xs) = (func x) : mMap func xs
+
+mFilter :: (a -> Bool) -> [a] -> [a]
+mFilter _ [] = []
+mFilter condition (x:xs) = if condition x
+                           then x : mFilter condition xs
+                           else mFilter condition xs
+
+mRevFilter :: (a -> Bool) -> [a] -> [a]
+mRevFilter _ [] = []
+mRevFilter condition (x:xs) = if condition x
+                              then mRevFilter condition xs
+                              else x : mRevFilter condition xs
