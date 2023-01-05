@@ -1,3 +1,14 @@
 {
-  "cSpell.ignoreWords": ["alphanum", "fmap", "inicontents", "parsefunc", "parserfunc", "quotedchar", "quotedvalue", "whitespaces"]
+  "cSpell.ignoreWords": [
+    "Foldl",
+    "Foldr",
+    "alphanum",
+    "fmap",
+    "inicontents",
+    "parsefunc",
+    "parserfunc",
+    "quotedchar",
+    "quotedvalue",
+    "whitespaces"
+  ]
 }
