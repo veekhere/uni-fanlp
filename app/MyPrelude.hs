@@ -82,3 +82,9 @@ mElem2 x list = if (length filtered) > 0
                 else False
 
                 where filtered = filter (\a -> a == x) list
+
+gcdMap :: Integral a => [a] -> a
+gcdMap [] = error "Empty list"
+gcdMap [a] = a
+gcdMap (x:xs) = gcd x rest
+                where rest = gcdMap xs
